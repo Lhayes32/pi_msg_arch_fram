@@ -15,8 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout code (with submodules)
         uses: actions/checkout@v3
+        with:
+          submodules: recursive
 
       - name: Install dependencies
         run: |
@@ -34,5 +36,4 @@ jobs:
       - name: Test build
         working-directory: ./actor_framework_investigation/key_value_store_mpi_gpb/build/bin
         run: |
-          # Example: just show the executable for now; real MPI runs need more setup
           ls -lh
