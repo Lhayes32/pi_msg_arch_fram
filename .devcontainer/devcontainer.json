@@ -16,7 +16,8 @@
         "shd101wyy.markdown-preview-enhanced",
         "wayou.vscode-todo-highlight",
         "ms-vsliveshare.vsliveshare",
-        "jebbs.plantuml"
+        "jebbs.plantuml",
+        "peterj.proto"
       ],
       "settings": {
         "C_Cpp.codeAnalysis.clangTidy.enabled": true,
