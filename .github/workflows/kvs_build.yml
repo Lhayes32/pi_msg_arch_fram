@@ -2,10 +2,14 @@ name: Build MPI Protobuf KV Store
 
 on:
   push:
+    branches:
+      - main
     paths:
       - 'actor_framework_investigation/key_value_store_mpi_gpb/**'
       - '.github/workflows/build.yml'
   pull_request:
+    branches:
+      - main
     paths:
       - 'actor_framework_investigation/key_value_store_mpi_gpb/**'
       - '.github/workflows/build.yml'
