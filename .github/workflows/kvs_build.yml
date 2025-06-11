@@ -1,0 +1,43 @@
+name: Build MPI Protobuf KV Store
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'actor_framework_investigation/key_value_store_mpi_gpb/**'
+      - '.github/workflows/build.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'actor_framework_investigation/key_value_store_mpi_gpb/**'
+      - '.github/workflows/build.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code (with submodules)
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake build-essential openmpi-bin libopenmpi-dev protobuf-compiler libprotobuf-dev
+
+      - name: Build with CMake
+        working-directory: ./actor_framework_investigation/key_value_store_mpi_gpb
+        run: |
+          mkdir -p build
+          cd build
+          cmake ..
+          make -j$(nproc)
+
+      - name: Test build
+        working-directory: ./actor_framework_investigation/key_value_store_mpi_gpb/build/bin
+        run: |
+          ls -lh
