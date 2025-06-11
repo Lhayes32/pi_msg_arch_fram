@@ -6,13 +6,13 @@ on:
       - main
     paths:
       - 'actor_framework_investigation/key_value_store_mpi_gpb/**'
-      - '.github/workflows/build.yml'
+      - '.github/workflows/kvs_build.yml'
   pull_request:
     branches:
       - main
     paths:
       - 'actor_framework_investigation/key_value_store_mpi_gpb/**'
-      - '.github/workflows/build.yml'
+      - '.github/workflows/kvs_build.yml'
 
 jobs:
   build:
