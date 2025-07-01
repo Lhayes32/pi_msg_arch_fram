@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package test;
+
+// Enum type
+enum TestEnum {
+    UNKNOWN = 0;
+    FIRST = 1;
+    SECOND = 2;
+}
+
+// Nested message
+message Nested {
+    int32 nested_int = 1;
+    string nested_str = 2;
+}
+
+// Main message covering all data types
+message AllTypes {
+    // Scalars
+    double      my_double   = 1;
+    float       my_float    = 2;
+    int32       my_int32    = 3;
+    int64       my_int64    = 4;
+    uint32      my_uint32   = 5;
+    uint64      my_uint64   = 6;
+    sint32      my_sint32   = 7;
+    sint64      my_sint64   = 8;
+    fixed32     my_fixed32  = 9;
+    fixed64     my_fixed64  = 10;
+    sfixed32    my_sfixed32 = 11;
+    sfixed64    my_sfixed64 = 12;
+    bool        my_bool     = 13;
+    string      my_string   = 14;
+    bytes       my_bytes    = 15;
+
+    // Enum
+    TestEnum    my_enum     = 16;
+
+    // Nested Message
+    Nested      my_nested   = 17;
+
+    // Repeated fields (arrays)
+    repeated int32   my_repeated_int32   = 18;
+    repeated string  my_repeated_string  = 19;
+    repeated Nested  my_repeated_nested  = 20;
+    repeated TestEnum my_repeated_enum   = 21;
+}

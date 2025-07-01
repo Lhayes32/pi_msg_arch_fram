@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+531fe904e6c0f3e4031067c904491bef ../src/test_proto.pb.cc

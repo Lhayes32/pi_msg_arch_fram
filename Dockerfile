@@ -13,6 +13,11 @@ RUN apt-get update && apt-get install -y \
     rabbitmq-server \
     default-jdk \
     net-tools iputils-ping \
+    # Boost for SimpleAmqpClient
+    librabbitmq-dev \
+    libboost-all-dev \
+    # Json testing
+    nlohmann-json3-dev
     # Kafka prequisites
     openjdk-11-jre-headless \
     zookeeperd \
@@ -37,6 +42,13 @@ RUN python3 -m pip install --upgrade pip && \
     pycapnp
     
 # --- Build and install gRPC C++ ---
+
+
+# --- Build and install SimpleAmqpClient
+RUN git clone https://github.com/alanxz/SimpleAmqpClient.git \
+    cd SimpleAmqpClient && mkdir build && cd build \
+    cmake .. && make && make install \
+    cd ../.. && rm -rf SimpleAmqpClient
 
 # --- Add your workspace ---
 WORKDIR /workspace

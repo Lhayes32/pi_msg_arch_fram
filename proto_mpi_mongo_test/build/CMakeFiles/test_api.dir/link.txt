@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/test_api.dir/src/main.cpp.o CMakeFiles/test_api.dir/src/test_proto.pb.cc.o -o bin/test_api  -Wl,-rpath,/usr/local/lib:/usr/lib/x86_64-linux-gnu/openmpi/lib: /usr/lib/x86_64-linux-gnu/libprotobuf.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so -lmongocxx -lbsoncxx -lbsoncxx 
