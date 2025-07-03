@@ -1,7 +1,0 @@
-/workspaces/pi_msg_arch_fram/proto_mpi_mongo_test/build/CMakeFiles/test_api.dir
-/workspaces/pi_msg_arch_fram/proto_mpi_mongo_test/build/CMakeFiles/edit_cache.dir
-/workspaces/pi_msg_arch_fram/proto_mpi_mongo_test/build/CMakeFiles/rebuild_cache.dir
-/workspaces/pi_msg_arch_fram/proto_mpi_mongo_test/build/CMakeFiles/list_install_components.dir
-/workspaces/pi_msg_arch_fram/proto_mpi_mongo_test/build/CMakeFiles/install.dir
-/workspaces/pi_msg_arch_fram/proto_mpi_mongo_test/build/CMakeFiles/install/local.dir
-/workspaces/pi_msg_arch_fram/proto_mpi_mongo_test/build/CMakeFiles/install/strip.dir
