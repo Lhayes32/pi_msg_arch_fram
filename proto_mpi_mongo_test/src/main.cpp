@@ -20,17 +20,14 @@ int main(int argc, char* argv[]) {
 
     mongocxx::instance instance{};
 
-    // Use the API class
     ProtoMongoAPI api("mongodb://localhost:27017", "testdb", "all_types_coll");
 
-    // Clean up: only rank 0 clears the collection for a fresh test
     if (world_rank == 0) {
-        api.delete_one({});  // This deletes just one; to clear all, you could add delete_many
+        api.delete_one({});  
         std::cout << "Cleared collection for fresh test.\n";
     }
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // Each rank inserts a doc
     AllTypes msg;
     msg.set_my_int32(world_rank * 10);
     msg.set_my_string("Hello from rank " + std::to_string(world_rank));
@@ -39,7 +36,6 @@ int main(int argc, char* argv[]) {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // Rank 0: read all documents
     if (world_rank == 0) {
         mongocxx::client client{mongocxx::uri{"mongodb://localhost:27017"}};
         auto db = client["testdb"];
@@ -59,7 +55,6 @@ int main(int argc, char* argv[]) {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // [Bonus] Test update: update a document for this rank
     msg.set_my_string("Updated by rank " + std::to_string(world_rank));
     api.update_one(
         bsoncxx::builder::stream::document{} << "type" << msg.GetTypeName() << bsoncxx::builder::stream::finalize, 
@@ -69,7 +64,6 @@ int main(int argc, char* argv[]) {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // [Bonus] Test find_one
     AllTypes out_msg;
     if (api.find_one(out_msg)) {
         std::cout << "[Rank " << world_rank << "] Sample doc: my_int32=" << out_msg.my_int32()
@@ -80,7 +74,6 @@ int main(int argc, char* argv[]) {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // [Bonus] Rank 0 deletes one document
     if (world_rank == 0) {
         api.delete_one({});
         std::cout << "Deleted one document from collection.\n";
